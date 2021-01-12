@@ -6,7 +6,7 @@ import MyLibrary 1.0
 
 Window {
     title: qsTr("Hello World")
-    width: 640
+    width: 800
     height: 480
     visible: true
 
@@ -24,12 +24,10 @@ Window {
         width: 72
         height: 263
 
-        TextInput {
-            id: textInput_length
-            width: 80
-            height: 20
+        Label {
+            id: label_length
             text: backend.length
-            font.pixelSize: 12
+            font.pointSize: 12
         }
 
         Slider {
@@ -51,12 +49,10 @@ Window {
         width: 72
         height: 263
 
-        TextInput {
-            id: textInput_width
-            width: 80
-            height: 20
+        Label {
+            id: label_width
             text: backend.width
-            font.pixelSize: 12
+            font.pointSize: 12
         }
 
         Slider {
@@ -87,6 +83,7 @@ Window {
         Label {
             id: label_area
             text: backend.area
+            font.pointSize: 12
         }
     }
 
@@ -97,6 +94,7 @@ Window {
         text: qsTr("Continuous calculate")
         checked: backend.is_continuous
         onCheckedChanged: backend.is_continuous = checked
+        font.pointSize: 12
     }
 
     Button {
@@ -107,10 +105,11 @@ Window {
         onClicked: {
             backend.calculate_area()
         }
+        font.pointSize: 12
     }
 
     Label {
-        id: label
+        id: labelCaption_length
         x: 131
         y: 23
         text: qsTr("Length")
@@ -118,7 +117,7 @@ Window {
     }
 
     Label {
-        id: label1
+        id: labelCaption_width
         x: 249
         y: 23
         text: qsTr("Width")
@@ -126,7 +125,7 @@ Window {
     }
 
     Label {
-        id: label3
+        id: labelCaption_area
         x: 196
         y: 377
         text: qsTr("Area")
