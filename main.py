@@ -1,5 +1,6 @@
 import os
 import random
+import sys
 
 from PySide2 import QtCore, QtGui, QtQml
 
@@ -28,14 +29,19 @@ class Backend(QtCore.QObject, metaclass=PropertyMeta):
         self.area = whatIsArea(self.length, self.width)
 
 
-def main():
-    import sys
+def resource_path(relative):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative)
+    return os.path.join(relative)
 
+
+def main():
     CURRENT_DIR = os.path.dirname(sys.argv[0])
 
     QtQml.qmlRegisterType(Backend, 'MyLibrary', 1, 0, 'Backend')
 
     app = QtGui.QGuiApplication(sys.argv)
+    app.setWindowIcon(QtGui.QIcon(resource_path('icon.ico')))
 
     engine = QtQml.QQmlApplicationEngine()
 
