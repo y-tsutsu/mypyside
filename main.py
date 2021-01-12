@@ -48,7 +48,7 @@ def main():
     utils = Utils()
     engine.rootContext().setContextProperty('Utils', utils)
 
-    engine.load(os.path.join(CURRENT_DIR, 'main.qml'))
+    engine.load(os.path.join(CURRENT_DIR, resource_path('main.qml')))
 
     if not engine.rootObjects():
         sys.exit(-1)

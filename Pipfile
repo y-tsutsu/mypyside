@@ -10,12 +10,15 @@ pyside2 = "*"
 autopep8 = "*"
 flake8 = "*"
 rope = "*"
+pyinstaller = "*"
 
 [requires]
 python_version = "3.9"
 
 [scripts]
 start = "python main.py"
+build = "pyinstaller main.spec"
+clean = "rm -rf build/ dist/mypyside.exe"
 test = "python -m unittest discover -v"
 format = "autopep8 -ivr ."
 lint = "flake8 --show-source ."
