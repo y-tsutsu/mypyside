@@ -2,11 +2,20 @@ import QtQuick 2.13
 import QtQuick.Window 2.13
 import QtQuick.Controls 2.2
 
+import MyLibrary 1.0
+
 Window {
     title: qsTr("Hello World")
     width: 640
     height: 480
     visible: true
+
+    Backend{
+        id: backend
+        length: 55
+        width: 87
+        Component.onCompleted: calculate_area()
+    }
 
     Column {
         id: column
@@ -19,7 +28,7 @@ Window {
             id: textInput_length
             width: 80
             height: 20
-            text: length_param.qml_prop_int
+            text: backend.length
             font.pixelSize: 12
         }
 
@@ -27,10 +36,10 @@ Window {
             id: slider_length
             to: 100
             orientation: Qt.Vertical
-            value: length_param.qml_prop_int
+            value: backend.length
             onValueChanged: {
-                length_param.set(value)
-                if (continuous_switch.checked) { mylogic.calculate_area_param() }
+                backend.length = value
+                if (backend.is_continuous) { backend.calculate_area() }
             }
         }
     }
@@ -46,18 +55,18 @@ Window {
             id: textInput_width
             width: 80
             height: 20
-            text: width_param.qml_prop_int
+            text: backend.width
             font.pixelSize: 12
         }
 
         Slider {
             id: slider_width
             to: 100
-            value: width_param.qml_prop_int
+            value: backend.width
             orientation: Qt.Vertical
             onValueChanged: {
-                width_param.set(value)
-                if (continuous_switch.checked) { mylogic.calculate_area_param() }
+                backend.width = value
+                if (backend.is_continuous) { backend.calculate_area() }
             }
         }
     }
@@ -72,12 +81,12 @@ Window {
         Slider {
             id: slider_area
             to: 10000
-            value: area_param.qml_prop_float
+            value: backend.area
         }
 
         Label {
             id: label_area
-            text: area_param.qml_prop_float
+            text: backend.area
         }
     }
 
@@ -86,7 +95,8 @@ Window {
         x: 343
         y: 149
         text: qsTr("Continuous calculate")
-        checked: continuous_calc_param.qml_prop_bool
+        checked: backend.is_continuous
+        onCheckedChanged: backend.is_continuous = checked
     }
 
     Button {
@@ -95,7 +105,7 @@ Window {
         y: 205
         text: qsTr("Calculate")
         onClicked: {
-            mylogic.calculate_area_param()
+            backend.calculate_area()
         }
     }
 
@@ -122,4 +132,6 @@ Window {
         text: qsTr("Area")
         font.pointSize: 12
     }
+
+    Component.onCompleted: Utils.do_something()
 }
