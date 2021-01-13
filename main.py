@@ -36,6 +36,8 @@ def resource_path(relative):
 
 
 def main():
+    sys.argv += ['--style', 'material']
+
     CURRENT_DIR = os.path.dirname(sys.argv[0])
 
     QtQml.qmlRegisterType(Backend, 'MyLibrary', 1, 0, 'Backend')

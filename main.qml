@@ -1,16 +1,20 @@
 import QtQuick 2.13
 import QtQuick.Window 2.13
 import QtQuick.Controls 2.2
+import QtQuick.Controls.Material 2.2
 
 import MyLibrary 1.0
 
-Window {
+ApplicationWindow {
     title: qsTr("Hello World")
     width: 800
     height: 480
     visible: true
 
-    Backend{
+    Material.theme: Material.Dark
+    Material.accent: Material.Pink
+
+    Backend {
         id: backend
         length: 55
         width: 87
@@ -27,7 +31,7 @@ Window {
         Label {
             id: label_length
             text: backend.length
-            font.pointSize: 12
+            font.pointSize: 11
         }
 
         Slider {
@@ -52,7 +56,7 @@ Window {
         Label {
             id: label_width
             text: backend.width
-            font.pointSize: 12
+            font.pointSize: 11
         }
 
         Slider {
@@ -83,7 +87,7 @@ Window {
         Label {
             id: label_area
             text: backend.area
-            font.pointSize: 12
+            font.pointSize: 11
         }
     }
 
@@ -94,7 +98,7 @@ Window {
         text: qsTr("Continuous calculate")
         checked: backend.is_continuous
         onCheckedChanged: backend.is_continuous = checked
-        font.pointSize: 12
+        font.pointSize: 11
     }
 
     Button {
@@ -105,7 +109,7 @@ Window {
         onClicked: {
             backend.calculate_area()
         }
-        font.pointSize: 12
+        font.pointSize: 11
     }
 
     Label {
@@ -113,7 +117,7 @@ Window {
         x: 131
         y: 23
         text: qsTr("Length")
-        font.pointSize: 12
+        font.pointSize: 11
     }
 
     Label {
@@ -121,7 +125,7 @@ Window {
         x: 249
         y: 23
         text: qsTr("Width")
-        font.pointSize: 12
+        font.pointSize: 11
     }
 
     Label {
@@ -129,7 +133,7 @@ Window {
         x: 196
         y: 377
         text: qsTr("Area")
-        font.pointSize: 12
+        font.pointSize: 11
     }
 
     Component.onCompleted: Utils.do_something()
