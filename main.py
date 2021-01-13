@@ -7,11 +7,6 @@ from PySide2 import QtCore, QtGui, QtQml
 from customproperty import Property, PropertyMeta
 
 
-def whatIsArea(length, width):
-    result = float(length * width) + random.random()
-    return result
-
-
 class Utils(QtCore.QObject):
     @QtCore.Slot()
     def do_something(self):
@@ -26,7 +21,11 @@ class Backend(QtCore.QObject, metaclass=PropertyMeta):
 
     @QtCore.Slot()
     def calculate_area(self):
-        self.area = whatIsArea(self.length, self.width)
+        self.area = self.whatIsArea(self.length, self.width)
+
+    def whatIsArea(self, length, width):
+        result = float(length * width) + random.random()
+        return result
 
 
 def resource_path(relative):
@@ -50,7 +49,7 @@ def main():
     utils = Utils()
     engine.rootContext().setContextProperty('Utils', utils)
 
-    engine.load(os.path.join(CURRENT_DIR, resource_path('main.qml')))
+    engine.load(os.path.join(CURRENT_DIR, resource_path('qml/main.qml')))
 
     if not engine.rootObjects():
         sys.exit(-1)

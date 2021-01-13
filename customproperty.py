@@ -10,9 +10,7 @@ class PropertyMeta(type(QtCore.QObject)):
             initial_value = attr.initial_value
             type_ = type(initial_value)
             notifier = QtCore.Signal(type_)
-            attrs[key] = PropertyImpl(
-                initial_value, name=key, type_=type_, notify=notifier
-            )
+            attrs[key] = PropertyImpl(initial_value, name=key, type_=type_, notify=notifier)
             attrs[signal_attribute_name(key)] = notifier
         return super().__new__(cls, name, bases, attrs)
 
