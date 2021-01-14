@@ -31,7 +31,7 @@ ApplicationWindow {
         Label {
             id: label_length
             text: backend.length
-            font.pointSize: 11
+            font.pointSize: 12
         }
 
         Slider {
@@ -56,7 +56,7 @@ ApplicationWindow {
         Label {
             id: label_width
             text: backend.width
-            font.pointSize: 11
+            font.pointSize: 12
         }
 
         Slider {
@@ -87,7 +87,7 @@ ApplicationWindow {
         Label {
             id: label_area
             text: backend.area
-            font.pointSize: 11
+            font.pointSize: 12
         }
     }
 
@@ -98,7 +98,7 @@ ApplicationWindow {
         text: qsTr("Continuous calculate")
         checked: backend.is_continuous
         onCheckedChanged: backend.is_continuous = checked
-        font.pointSize: 11
+        font.pointSize: 12
     }
 
     Button {
@@ -109,7 +109,7 @@ ApplicationWindow {
         onClicked: {
             backend.calculate_area()
         }
-        font.pointSize: 11
+        font.pointSize: 12
     }
 
     Label {
@@ -117,7 +117,7 @@ ApplicationWindow {
         x: 131
         y: 23
         text: qsTr("Length")
-        font.pointSize: 11
+        font.pointSize: 12
     }
 
     Label {
@@ -125,7 +125,7 @@ ApplicationWindow {
         x: 249
         y: 23
         text: qsTr("Width")
-        font.pointSize: 11
+        font.pointSize: 12
     }
 
     Label {
@@ -133,7 +133,7 @@ ApplicationWindow {
         x: 196
         y: 377
         text: qsTr("Area")
-        font.pointSize: 11
+        font.pointSize: 12
     }
 
     Component.onCompleted: Utils.do_something()

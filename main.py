@@ -39,6 +39,9 @@ def main():
 
     CURRENT_DIR = os.path.dirname(sys.argv[0])
 
+    QtGui.QGuiApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
+    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps)
+
     QtQml.qmlRegisterType(Backend, 'MyLibrary', 1, 0, 'Backend')
 
     app = QtGui.QGuiApplication(sys.argv)
