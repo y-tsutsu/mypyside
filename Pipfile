@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pyside2 = "*"
+pyside6 = "*"
 
 [dev-packages]
 autopep8 = "*"
@@ -13,7 +13,7 @@ rope = "*"
 pyinstaller = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.13"
 
 [scripts]
 start = "python main.py"

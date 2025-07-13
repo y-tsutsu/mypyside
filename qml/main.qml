@@ -1,7 +1,7 @@
-import QtQuick 2.13
-import QtQuick.Window 2.13
-import QtQuick.Controls 2.2
-import QtQuick.Controls.Material 2.2
+import QtQuick
+import QtQuick.Window
+import QtQuick.Controls
+import QtQuick.Controls.Material
 
 import MyLibrary 1.0
 
@@ -40,8 +40,10 @@ ApplicationWindow {
             orientation: Qt.Vertical
             value: backend.length
             onValueChanged: {
-                backend.length = value
-                if (backend.is_continuous) { backend.calculate_area() }
+                backend.length = value;
+                if (backend.is_continuous) {
+                    backend.calculate_area();
+                }
             }
         }
     }
@@ -65,8 +67,10 @@ ApplicationWindow {
             value: backend.width
             orientation: Qt.Vertical
             onValueChanged: {
-                backend.width = value
-                if (backend.is_continuous) { backend.calculate_area() }
+                backend.width = value;
+                if (backend.is_continuous) {
+                    backend.calculate_area();
+                }
             }
         }
     }
@@ -107,7 +111,7 @@ ApplicationWindow {
         y: 205
         text: qsTr("Calculate")
         onClicked: {
-            backend.calculate_area()
+            backend.calculate_area();
         }
         font.pointSize: 12
     }

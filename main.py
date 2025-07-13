@@ -2,7 +2,7 @@ import os
 import random
 import sys
 
-from PySide2 import QtCore, QtGui, QtQml
+from PySide6 import QtCore, QtGui, QtQml
 
 from customproperty import Property, PropertyMeta
 
@@ -35,12 +35,11 @@ def resource_path(relative):
 
 
 def main():
-    sys.argv += ['--style', 'material']
+    sys.argv += ['--style', 'Material']
 
     CURRENT_DIR = os.path.dirname(sys.argv[0])
 
-    QtGui.QGuiApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
-    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps)
+    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_UseOpenGLES)
 
     QtQml.qmlRegisterType(Backend, 'MyLibrary', 1, 0, 'Backend')
 
@@ -56,7 +55,7 @@ def main():
 
     if not engine.rootObjects():
         sys.exit(-1)
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':
